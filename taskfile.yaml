@@ -1,5 +1,8 @@
 version: "3"
 
+env:
+  VERSION: "0.1.0"
+
 tasks:
   default:
     cmds:
@@ -9,7 +12,7 @@ tasks:
     cmds:
       - rustup update
       - cargo install --force --version "0.7.0" rust-script
-      - cargo install --force --version "0.37.5" cargo-make
+      - cargo install --force --version "0.37.11" cargo-make
     silent: false
 
   build:
@@ -20,15 +23,7 @@ tasks:
 
   build-plain:
     cmds:
-      - cmd: cargo make --profile release -- build-binary
-
-  build-installer:
-    cmds:
-      - cargo make build-windows-installer --profile release
-
-  build-portable:
-    cmds:
-      - cargo make build-windows-portable --profile release
+      - cmd: cargo make --profile release -- build
 
   create-bundle:
     deps:
