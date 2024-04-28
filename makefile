@@ -81,7 +81,7 @@ fmt:	config
 version:
 	@echo -n "${VERSION}"
 
-dist:	
+dist:
 	mkdir -p dmenu-$(VERSION)
 	cp -r LICENSE README.md makefile config.mk src dmenu-$(VERSION)
 	tar -cf dmenu-$(VERSION).tar dmenu-$(VERSION)

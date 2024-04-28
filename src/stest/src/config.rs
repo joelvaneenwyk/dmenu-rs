@@ -8,7 +8,7 @@ use clap::Parser;
 /// stdin.
 /// /*env!("VERSION")*/
 #[derive(Clone, Debug, Parser)]
-#[command(author, version = 9, about, long_about)]
+#[command(author, version = "9", about, long_about)]
 pub struct Config {
     /// Test hidden files.
     #[arg(short = 'a')]

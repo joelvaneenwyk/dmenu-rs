@@ -1,7 +1,6 @@
 #![allow(deprecated)]
 
 use std::path::PathBuf;
-use bindgen::CargoCallbacks;
 
 // bindgen is pretty slow, so we add a layer of indirection,
 // making sure it's only ran when needed. build.rs has great
@@ -17,11 +16,11 @@ fn main() {
     // but doesn't quite get everything we need.
     // So, generate bindings here.
     let mut builder_main = bindgen::Builder::default();
-    builder_main = builder_main.header("./src/fontconfig.h");
-    builder_main = builder_main.header("./src/xinerama.h");
+    builder_main = builder_main.header("src/fontconfig.h");
+    builder_main = builder_main.header("src/xinerama.h");
 
     builder_main
-        .parse_callbacks(Box::new(CargoCallbacks))
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings_main")
         .write_to_file(build_path.join("bindings_main.rs"))
@@ -32,7 +31,7 @@ fn main() {
     bindgen::Builder::default()
         .header("src/xlib.h")
         .ignore_functions() // strip out unused and warning-prone functions
-        .parse_callbacks(Box::new(CargoCallbacks))
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings_xlib")
         .write_to_file(build_path.join("bindings_xlib.rs"))

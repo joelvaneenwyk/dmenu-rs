@@ -1,3 +1,0 @@
-[workspace]
-resolver = "2"
-members = ["src/config", "src/headers", "src/stest"]
