@@ -1,12 +1,31 @@
 {
-    "configurations": [
+  "configurations": [
+    {
+      "cmakeDebugType": "external",
+      "name": "Debug portfile(s)",
+      "pipeName": "/tmp/vcpkg_ext_portfile_dbg",
+      "preLaunchTask": "Debug vcpkg commands",
+      "request": "launch",
+      "type": "cmake"
+    },
+    {
+      "args": [],
+      "cwd": "/home/joelvaneenwyk/projects/dmenu-rs",
+      "externalConsole": false,
+      "miDebuggerPath": "gdb",
+      "MIMode": "gdb",
+      "name": "C/C++ Runner: Debug Session",
+      "program": "/home/joelvaneenwyk/projects/dmenu-rs/build/Debug/outDebug",
+      "request": "launch",
+      "setupCommands": [
         {
-            "type": "cmake",
-            "request": "launch",
-            "name": "Debug portfile(s)",
-            "cmakeDebugType": "external",
-            "pipeName": "/tmp/vcpkg_ext_portfile_dbg",
-            "preLaunchTask": "Debug vcpkg commands"
+          "description": "Enable pretty-printing for gdb",
+          "ignoreFailures": true,
+          "text": "-enable-pretty-printing"
         }
-    ]
+      ],
+      "stopAtEntry": false,
+      "type": "cppdbg"
+    }
+  ]
 }
