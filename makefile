@@ -28,31 +28,31 @@ options:
 	@echo "PLUGINS    = $(PLUGINS)"
 
 config:	scaffold
-	cd src && cargo run --release -p config --bin config
+	cargo run --release -p config --bin config
 	$(MAKE) m4
 
 dmenu:	config
-	cd src && cargo run --release -p headers
-	cd src && cargo build -p dmenu-build --release $(XINERAMA_FLAGS) $(CARGOFLAGS)
+	cargo run --release -p headers
+	cargo build -p dmenu-build --release $(XINERAMA_FLAGS) $(CARGOFLAGS)
 	cp src/target/release/dmenu target/
 
 man:	config
 	man target/dmenu.1
 
 test:	all
-	cd src && cargo test
+	cargo test
 	seq 1 100 | target/dmenu $(ARGS)
 
 debug:	config
-	cd src && cargo build -p dmenu-build $(XINERAMA_FLAGS) $(CARGOFLAGS)
+	cargo build -p dmenu-build $(XINERAMA_FLAGS) $(CARGOFLAGS)
 	cp src/target/debug/dmenu target
 	seq 1 100 | target/dmenu $(ARGS)
 
 plugins:
-	cd src && cargo run --release -p config --bin list-plugins
+	cargo run --release -p config --bin list-plugins
 
 stest:
-	cd src && cargo build -p stest --release $(XINERAMA_FLAGS) $(CARGOFLAGS)
+	cargo build -p stest --release $(XINERAMA_FLAGS) $(CARGOFLAGS)
 	cp src/target/release/stest target/
 	cp src/man/src/stest.1 target/
 
@@ -68,7 +68,7 @@ m4:
 	cmp -s -- target/build/Cargo.toml src/build/Cargo.toml || cp target/build/Cargo.toml src/build/Cargo.toml
 
 clean:	scaffold
-	cd src && cargo clean -p config -p dmenu-build -p headers
+	cargo clean -p config -p dmenu-build -p headers
 	rm -rf src/target
 	rm -f vgcore* massif* src/build/Cargo.toml
 	rm -rf target
@@ -76,7 +76,7 @@ clean:	scaffold
 	rm -f src/Cargo.lock
 
 fmt:	config
-	cd src && cargo fmt
+	cargo fmt
 
 version:
 	@echo -n "${VERSION}"

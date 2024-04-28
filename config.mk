@@ -8,7 +8,7 @@ MANPREFIX = $(PREFIX)/share/man
 XINERAMA=true
 
 # compiler and linker for non-rust files, blank for system default (cc)
-CC =
+CC = g++
 
 # additional flags to be passed to rustc
 RUSTFLAGS =
@@ -19,4 +19,4 @@ CARGOFLAGS =
 
 # space seperated list of plugins to be compiled in
 # run `make plugins` to see a list of available plugins
-PLUGINS = 
+PLUGINS =

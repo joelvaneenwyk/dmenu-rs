@@ -66,7 +66,7 @@ pub fn get_yaml(file: &str, plugin: Option<&str>) -> Yaml {
             if let Err(err) = base.read_to_string(&mut yaml_str) {
                 panic!("Could not read yaml base file {}", err);
             }
-            //yaml_str = yaml_str.replace("$VERSION", &env!("VERSION"));
+            yaml_str = yaml_str.replace("$VERSION", &env!("VERSION"));
             YamlLoader::load_from_str(&yaml_str).unwrap().swap_remove(0)
         }
         Err(err) => {

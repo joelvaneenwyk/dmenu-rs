@@ -6,7 +6,7 @@ use std::fs::read_dir;
 use std::fs::DirEntry;
 use std::fs::Metadata;
 use std::io;
-//use std::os::unix::fs::{FileTypeExt, PermissionsExt};
+use std::os::unix::fs::{FileTypeExt, PermissionsExt};
 use std::path::Component;
 use std::path::PathBuf;
 use std::result::Result;
@@ -67,16 +67,14 @@ impl File {
 
     pub fn is_block_special(&self) -> Result<bool, io::Error> {
         fn is_block_special(metadata: Metadata) -> bool {
-            //metadata.file_type().is_block_device()
-            return false;
+            metadata.file_type().is_block_device()
         }
         self.metadata().map(is_block_special)
     }
 
     pub fn is_character_special(&self) -> Result<bool, io::Error> {
         fn is_character_special(metadata: Metadata) -> bool {
-            //metadata.file_type().is_char_device()
-            return false;
+            metadata.file_type().is_char_device()
         }
         self.metadata().map(is_character_special)
     }
@@ -127,8 +125,7 @@ impl File {
 
     pub fn is_pipe(&self) -> Result<bool, io::Error> {
         fn is_pipe(metadata: Metadata) -> bool {
-            //metadata.file_type().is_fifo()
-            return false;
+            metadata.file_type().is_fifo()
         }
         self.path_buf.metadata().map(is_pipe)
     }
@@ -213,8 +210,7 @@ impl File {
 
     fn mode(&self) -> Result<u32, io::Error> {
         fn metadata_to_mode(metadata: Metadata) -> u32 {
-            // metadata.permissions().mode()
-            return 0;
+            metadata.permissions().mode()
         }
         self.metadata().map(metadata_to_mode)
     }

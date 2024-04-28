@@ -1,0 +1,37 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  setup:
+    cmds:
+      - rustup update
+      - cargo install --force --version "0.7.0" rust-script
+      - cargo install --force --version "0.37.5" cargo-make
+    silent: false
+
+  build:
+    deps: [setup]
+    cmds:
+      - task: build-plain
+      - echo 'Finished building "dmenu-rs" project.'
+
+  build-plain:
+    cmds:
+      - cmd: cargo make --profile release -- build-binary
+
+  build-installer:
+    cmds:
+      - cargo make build-windows-installer --profile release
+
+  build-portable:
+    cmds:
+      - cargo make build-windows-portable --profile release
+
+  create-bundle:
+    deps:
+      - setup
+    cmds:
+      - cargo make create-bundle --profile release

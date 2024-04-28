@@ -1,6 +1,7 @@
 # sh
 
 This directory contains the following shell scripts:
+
 - dmenu_path
 - dmenu_run
 

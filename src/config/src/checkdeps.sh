@@ -1,54 +1,53 @@
-#! /bin/sh
+#!/bin/sh
+
+set -eax
 
 FAILED=0
 
 # we can assume sh is installed or else we wouldn't be here
 
-printf "Checking for $CC... "
-if command -v $CC &> /dev/null
-then
+printf "Checking for '%s'... " "$CC"
+
+if command -v "$CC" >/dev/null 2>&1; then
     echo "yes"
 else
     echo "no"
-    >&2 echo "Build-time dependency $CC not installed. Install it or change the C compiler used in config.mk"
+    echo >&2 "Build-time dependency $CC not installed. Install it or change the C compiler used in config.mk"
     FAILED=1
 fi
 
 printf "Checking for X11 headers... "
-if $CC -c ../../headers/src/xlib.h -o tmp.gch;
-then
+if $CC -c ../../headers/src/xlib.h -o tmp.gch; then
     rm tmp.gch
     echo "yes"
 else
     echo "no"
-    >&2 echo "Build-time dependency <X11/Xlib.h> is not present. Install the xorg development packages"
+    echo >&2 "Build-time dependency <X11/Xlib.h> is not present. Install the xorg development packages"
     rm -f tmp.gch
     FAILED=1
 fi
 
 printf "Checking for fontconfig headers... "
-if $CC -c ../../headers/src/fontconfig.h -o tmp.gch;
-then
+if $CC -c ../../headers/src/fontconfig.h -o tmp.gch; then
     rm tmp.gch
     echo "yes"
 else
     echo "no"
-    >&2 echo "Build-time dependency <fontconfig/fontconfig.h> is not present. Install fontconfig packages"
+    echo >&2 "Build-time dependency <fontconfig/fontconfig.h> is not present. Install fontconfig packages"
     rm -f tmp.gch
     FAILED=1
 fi
 
 if [ "$XINERAMA" = "true" ]; then
     printf "Checking for xinerama headers... "
-    if $CC -c ../../headers/src/xinerama.h -o tmp.gch;
-    then
-	rm tmp.gch
-	echo "yes"
+    if $CC -c ../../headers/src/xinerama.h -o tmp.gch; then
+        rm tmp.gch
+        echo "yes"
     else
-	echo "no"
-	>&2 echo "Build-time dependency <extensions/Xinerama.h> is not present. Install xinerama package(s) or disable the feature in config.mk"
-	rm -f tmp.gch
-	FAILED=1
+        echo "no"
+        echo >&2 "Build-time dependency <extensions/Xinerama.h> is not present. Install xinerama package(s) or disable the feature in config.mk"
+        rm -f tmp.gch
+        FAILED=1
     fi
 fi
 
