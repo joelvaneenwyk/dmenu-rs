@@ -1,4 +1,9 @@
 {
+  "[rust]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.cppCompilerPath": "g++",
@@ -55,5 +60,22 @@
     "-Wsign-conversion",
     "-Wnull-dereference"
   ],
-  "C_Cpp_Runner.warningsAsError": false
+  "C_Cpp_Runner.warningsAsError": false,
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.bbmodel": "json",
+    "*.ejs": "html",
+    "*.emu": "html",
+    "*.hbs": "html",
+    "*.rasi": "css",
+    "*.sublime-snippet": "xml",
+    "*.Xresources": "xdefaults",
+    "dmenu_path": "shellscript",
+    "dmenu_run": "shellscript",
+    "i3/*.conf": "i3",
+    "i3/config": "i3",
+    "lesskey": "lesskey",
+    "polybar/*.conf": "ini",
+    "polybar/config": "ini"
+  }
 }

@@ -56,6 +56,9 @@ Cargo.lock text
 *.fish     text eol=lf
 *.ksh      text eol=lf
 *.sh       text eol=lf
+dmenu_path text eol=lf
+dmenu_run  text eol=lf
+*.sh       text eol=lf
 *.zsh      text eol=lf
 # These are explicitly windows files and should use crlf
 *.bat      text eol=crlf
