@@ -6,8 +6,9 @@ use clap::Parser;
 /// stest takes a list of files and filters by the files' properties, analogous to test. Files
 /// which pass all tests are printed to stdout. If no files are given, stest reads files from
 /// stdin.
+/// /*env!("VERSION")*/
 #[derive(Clone, Debug, Parser)]
-#[command(author, version = env!("VERSION"), about, long_about)]
+#[command(author, version = 9, about, long_about)]
 pub struct Config {
     /// Test hidden files.
     #[arg(short = 'a')]
