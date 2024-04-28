@@ -2,15 +2,16 @@
 
 Source code directory. The folders contained here, as well as their
 functions are as follows:  
-- dmenu  
+
+- `dmenu`  
   The main `dmenu(1)` program
-- plugins
+- `plugins`
   Plugin files that can be conditionally compiled in
-- stest  
+- `stest`  
   The `stest(1)` program
-- headers  
+- `headers`  
   C headers used by bindgen to create Rust bindings for external libraries
-- man  
+- `man`  
   Man page contents
-- sh  
+- `sh`  
   Shell scripts for drop-in compatibility with dmenu

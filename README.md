@@ -13,7 +13,7 @@ There is a __small__ and ever-shrinking chance that this will be updated or over
 ### Inspiration
 This project started with [`dmenu-calc`](https://github.com/sumnerevans/menu-calc).
 Initially, I wanted much more function than what is provided by `bc`. However, I
-found the bottleneck to be a lack of functionality and modability in `dmenu(1)`
+found the bottleneck to be a lack of functionality and mod-ability in `dmenu(1)`
 itself. So, the choice I had was to either mod `dmenu(1)` or rewrite it. Because
 dmenu source is horrendously annoying to read, I decided to rewrite it in a
 language which lends itself to writing code that is easier to modify. There are
