@@ -1,6 +1,19 @@
 {
   "configurations": [
     {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Cargo launch",
+      "cargo": {
+        "args": [
+          "build",
+          "--lib",
+          "dmenu"
+        ]
+      },
+      "args": []
+    },
+    {
       "cmakeDebugType": "external",
       "name": "Debug portfile(s)",
       "pipeName": "/tmp/vcpkg_ext_portfile_dbg",
