@@ -16,7 +16,7 @@ fn main() {
 
     // Check for dependencies
     if run_build_command(
-        &format!("sh checkdeps.sh"),
+        &format!("bash checkdeps.sh"),
         &"config/src/",
         &format!("dependency check"),
     )

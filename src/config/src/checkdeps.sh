@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+REPO_ROOT="$(cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")" &>/dev/null && cd ../../.. && pwd)"
+export REPO_ROOT
+echo "Repo: $REPO_ROOT"
+SRC_DIR="$REPO_ROOT/src"
 
 set -eax
 
@@ -6,6 +11,8 @@ FAILED=0
 
 # we can assume sh is installed or else we wouldn't be here
 
+XINERAMA=${XINERAMA:-true}
+CC=${CC:-cc}
 printf "Checking for '%s'... " "$CC"
 
 if command -v "$CC" >/dev/null 2>&1; then
@@ -17,7 +24,7 @@ else
 fi
 
 printf "Checking for X11 headers... "
-if $CC -c ../../headers/src/xlib.h -o tmp.gch; then
+if $CC -c "$SRC_DIR/headers/src/xlib.h" -o tmp.gch; then
     rm tmp.gch
     echo "yes"
 else
@@ -28,7 +35,7 @@ else
 fi
 
 printf "Checking for fontconfig headers... "
-if $CC -c ../../headers/src/fontconfig.h -o tmp.gch; then
+if $CC -c "$SRC_DIR/headers/src/fontconfig.h" -o tmp.gch; then
     rm tmp.gch
     echo "yes"
 else
@@ -40,7 +47,7 @@ fi
 
 if [ "$XINERAMA" = "true" ]; then
     printf "Checking for xinerama headers... "
-    if $CC -c ../../headers/src/xinerama.h -o tmp.gch; then
+    if $CC -c "$SRC_DIR/headers/src/xinerama.h" -o tmp.gch; then
         rm tmp.gch
         echo "yes"
     else
