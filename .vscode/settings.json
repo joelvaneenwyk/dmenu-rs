@@ -1,4 +1,10 @@
 {
+  "[shellscript]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  },
   "[rust]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit"
@@ -63,6 +69,7 @@
   "C_Cpp_Runner.warningsAsError": false,
   "editor.formatOnSave": true,
   "files.associations": {
+    "set-up-*": "shellscript",
     "*.bbmodel": "json",
     "*.ejs": "html",
     "*.emu": "html",
