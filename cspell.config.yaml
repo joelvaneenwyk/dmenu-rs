@@ -1,11 +1,11 @@
 version: "0.2"
 ignorePaths: []
 dictionaryDefinitions:
-  - name: custom-dictionary
-    path: ./.cspell/custom-dictionary.txt
+  - name: cspell-dmenu
+    path: ./.config/cspell-dmenu.txt
     addWords: true
 dictionaries:
-  - custom-dictionary
+  - cspell-dmenu
 words: []
 ignoreWords: []
 import: []
