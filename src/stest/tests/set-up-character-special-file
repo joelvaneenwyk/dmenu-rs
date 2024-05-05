@@ -2,8 +2,8 @@
 # main : () -> string
 # Return a path to a character special file that exists on most systems.
 function main {
-	echo "/dev/tty" || return 1
-	return 0
+    echo "/dev/tty" || return 1
+    return 0
 }
 
 main "$@"

@@ -2,11 +2,11 @@
 # main : () -> string
 # Create a named pipe. Return the path to the file.
 function main {
-	local -r tmp=$(mktemp --directory) || return 1
-	local -r file="$tmp/pipe-file" || return 1
-	mkfifo --mode=0000 "$file" || return 1
-	echo "$file" || return 1
-	return 0
+    local -r tmp=$(mktemp --directory) || return 1
+    local -r file="$tmp/pipe-file" || return 1
+    mkfifo --mode=0000 "$file" || return 1
+    echo "$file" || return 1
+    return 0
 }
 
 main "$@"
