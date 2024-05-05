@@ -1,3 +1,5 @@
+.mono/
+
 # editor files
 *~
 \#*\#
@@ -18,7 +20,5 @@ dmenu-*
 src/build/Cargo.toml
 src/Cargo.lock
 
-
 # Added by cargo
-
 /target
